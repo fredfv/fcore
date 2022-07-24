@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Summary>Created to learn about generic repository and docker</Summary>
+    <Title>pressF API</Title>
+    <Description>A generic repository in .net6 api using mongodb as database.</Description>
+    <Authors>Fred Vieira</Authors>
+    <Owners>Fred Vieira</Owners>
+    <Company>pressf.dev</Company>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryUrl>https://github.com/fredfv/pressf</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.7" />
+    <PackageReference Include="MongoDB.Driver" Version="2.17.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Serilog.Exceptions" Version="8.3.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+    <PackageReference Include="ServiceStack.Core" Version="6.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <UserSecretsId>9f0fafa8-91c1-40d3-8b44-005dedd19a5b</UserSecretsId>
+  </PropertyGroup>
+  
+</Project>
