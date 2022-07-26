@@ -1,29 +1,16 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443 
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["pressF.API.csproj", "."]
-RUN dotnet restore "./pressF.API.csproj"
+# Build Stage
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal as build
+WORKDIR /source
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "pressF.API.csproj" -c Release -o /app/build
+RUN dotnet restore "pressF.API.csproj" --disable-parallel
+RUN dotnet publish "pressF.API.csproj" -c release -o /app --no-restore
 
-FROM build AS publish
-RUN dotnet publish "pressF.API.csproj" -c Release -o /app/publish
-
-FROM base AS final
+# Serve Stage
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "pressfapi.dll"]
+COPY --from=build /app ./
 
+EXPOSE 80
+EXPOSE 443
 
-
-
-
-
-
-
-
+ENTRYPOINT ["dotnet", "pressF.API.dll"]
