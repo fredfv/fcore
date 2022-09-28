@@ -11,5 +11,6 @@ namespace pressF.API.Repository.Interfaces
         public Task<InternalAuthResponse> Auth(string password, string login);
         public Task<bool> IsBlocked(string id);
         public Task<IEnumerable<Person>> New(DateTimeOffset date);
+        public Task<bool> IsAllowedToCreate(Person person);
     }
 }

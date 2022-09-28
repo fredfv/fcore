@@ -3,6 +3,7 @@ using pressF.API.Authentication;
 using pressF.API.Enums;
 using pressF.API.Model;
 using pressF.API.Repository.Interfaces;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,10 +49,22 @@ namespace pressF.API.Repository
         }
 
         public async Task<IEnumerable<Person>> New(DateTimeOffset date)
-        {
+        {            
             var a = await DbSet.FindAsync(_ => _.Excluded == false && _.InsertDate >= date);
 
             return a.ToList();
+        }
+
+        public async Task<bool> IsAllowedToCreate(Person person)
+        {
+            var query = await DbSet.FindAsync(_ => _.Excluded == false && _.Username == person.Username);
+            var personCursor = query.ToList();
+
+            var tem = personCursor == null ? false : personCursor.Count == 0 ? false : personCursor.First() is Person;
+            //var personCreated = await DbSet.FindAsync(_ => _.Username == person.Username);
+
+            Log.Warning($"Is allowed to create? {!tem}");
+            return !tem;
         }
     }
 }

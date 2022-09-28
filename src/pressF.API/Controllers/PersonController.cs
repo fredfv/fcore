@@ -34,7 +34,7 @@ namespace pressF.API.Controllers
         [HttpGet("getall")]
         public async Task<ActionResult<IEnumerable<Person>>> GetAll()
         {
-            if(await _personRepository.IsBlocked(User.FindFirst(ClaimTypes.NameIdentifier)?.Value)) return StatusCode(StatusCodes.Status403Forbidden, new { message = "User is excluded" });
+            if (await _personRepository.IsBlocked(User.FindFirst(ClaimTypes.NameIdentifier)?.Value)) return StatusCode(StatusCodes.Status403Forbidden, new { message = "User is excluded" });
 
             var products = await _personRepository.GetAll();
 
@@ -49,7 +49,7 @@ namespace pressF.API.Controllers
 
             return Ok(product);
         }
-        
+
         [Authorize(Roles = "admin")]
         [HttpPost("insert")]
         public async Task<ActionResult<Person>> Insert([FromBody] PersonViewModel value)
@@ -115,6 +115,28 @@ namespace pressF.API.Controllers
             var product = await _personRepository.New(date);
 
             return Ok(product);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("createaccount")]
+        public async Task<ActionResult> CreateAccount([FromBody] PersonDTO value)
+        {
+            try
+            {
+
+                var person = new Person(value); 
+
+                if (await _personRepository.IsAllowedToCreate(person) == false) {
+                    return StatusCode(StatusCodes.Status409Conflict, new { message = "duplicated entity found" });
+                }
+                _personRepository.Add(person);
+                await _uow.Commit();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = e.InnerException.Message });
+            }
         }
     }
 }

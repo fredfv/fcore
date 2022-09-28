@@ -55,5 +55,15 @@ namespace pressF.API.Model
             Excluded = old.Excluded;
             ExcludedDate = old.ExcludedDate;
         }
+
+        public Person(PersonDTO p) { 
+        
+            Name = p.Name;
+            Password = p.Password;
+            Username = p.UserName;
+            Role = "user";
+
+            Excluded = false;
+        }
     }
 }
