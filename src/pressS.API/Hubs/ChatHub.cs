@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace fsocket.Hubs
+namespace pressS.API.Hubs
 {    
     public class ChatHub : Hub
     {

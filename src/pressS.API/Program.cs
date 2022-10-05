@@ -1,4 +1,4 @@
-using fsocket.Hubs;
+using pressS.API.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 

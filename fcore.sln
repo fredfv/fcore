@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pressF.API", "src\pressF.API\pressF.API.csproj", "{94CC7985-987B-4605-B26E-59527123CA86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fsocket", "fsocket\fsocket.csproj", "{EF400CBC-BB43-45A5-AC39-E810D40EF141}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pressS.API", "src\pressS.API\pressS.API.csproj", "{333AD66B-62C1-4E32-8338-DFBB97545747}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{94CC7985-987B-4605-B26E-59527123CA86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94CC7985-987B-4605-B26E-59527123CA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94CC7985-987B-4605-B26E-59527123CA86}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF400CBC-BB43-45A5-AC39-E810D40EF141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF400CBC-BB43-45A5-AC39-E810D40EF141}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF400CBC-BB43-45A5-AC39-E810D40EF141}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF400CBC-BB43-45A5-AC39-E810D40EF141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{333AD66B-62C1-4E32-8338-DFBB97545747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333AD66B-62C1-4E32-8338-DFBB97545747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333AD66B-62C1-4E32-8338-DFBB97545747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333AD66B-62C1-4E32-8338-DFBB97545747}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
